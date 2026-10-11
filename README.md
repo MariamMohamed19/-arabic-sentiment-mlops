@@ -31,11 +31,15 @@ served through a FastAPI endpoint. Built with Spec-Kit: read `.specify/memory/co
 
 | Run | Model | lr | Epochs | Val macro-F1 | Test macro-F1 |
 |---|---|---:|---:|---:|---:|
-| run1 | AraBERT | 2e-5 | 3 | TODO | TODO |
-| run2 | AraBERT | 3e-5 | 3 | TODO | TODO |
-| run3 | AraBERT | 5e-5 | 2 | TODO | 0.7217 |
-| run4 | CAMeL-BERT | 2e-5 | 3 | TODO | TODO |
-| run5 | CAMeL-BERT | 3e-5 | 3 | TODO | TODO |
+| run1 | AraBERT | 2e-5 | 3 | 0.7235 | 0.7242 |
+| run2 | AraBERT | 3e-5 | 3 | 0.7233 | 0.7210 |
+| run3 | AraBERT | 5e-5 | 2 | 0.7251 | 0.7217 |
+| run4 | CAMeL-BERT | 2e-5 | 3 | 0.7064 | 0.7064 |
+| run5 | CAMeL-BERT | 3e-5 | 3 | 0.7093 | 0.7101 |
+
+Run3 was selected because it has the highest **validation** macro-F1. Run1 happens to score slightly
+higher on the test split (0.7242), but the test split was not used to choose the model. The three
+AraBERT runs are within about half a point of each other, so the differences between them are small.
 
 Training on the full training set was not tried, so 0.7217 is probably not the ceiling.
 
