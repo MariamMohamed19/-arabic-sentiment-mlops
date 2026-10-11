@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.env
+mlruns/
+artifacts/
+/models/
+data/raw/*
+data/processed/*
+*.onnx
+*.engine
+
+*.egg-info/

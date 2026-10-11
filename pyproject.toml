@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arabic-sentiment-mlops"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["fastapi", "uvicorn[standard]", "pydantic", "pandas", "pyarrow", "scikit-learn", "numpy"]
+
+[project.optional-dependencies]
+ml = ["torch", "transformers", "datasets", "accelerate", "arabert"]
+ops = ["mlflow", "dvc", "bentoml", "evidently", "prometheus-client", "locust"]
+opt = ["onnx", "onnxruntime", "optimum[onnxruntime]"]
+dev = ["ruff", "httpx", "pytest"]
+
+[tool.setuptools.packages.find]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 100
