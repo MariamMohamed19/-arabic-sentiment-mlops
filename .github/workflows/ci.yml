@@ -26,4 +26,4 @@ jobs:
         with:
           context: .
           push: ${{ github.ref == 'refs/heads/main' }}
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ghcr.io/mariammohamed19/arabic-sentiment-mlops:latest
