@@ -80,12 +80,16 @@ pytest && ruff check .
 
 Training, ONNX export and the benchmark were run in Colab (`arabic_sentiment_colab.ipynb`) using
 `src/models/train.py`, `src/optimization/export_onnx.py` and `src/optimization/benchmark.py`.
-
 ## Docker
 
 `Dockerfile` and `docker-compose.yml` are included (CPU torch, model mounted from `artifacts/model`).
-**The image build was started but did not complete** (slow network, pip hash error on a corrupted
-download), so the container has **not been verified**.
+
+- The GitHub Actions workflow (`.github/workflows/ci.yml`) runs `ruff` and `pytest`, then builds the
+  image and pushes it to GitHub Container Registry on every push to `main`. Both the `test` and the
+  `docker` jobs passed.
+- A local build on my machine failed because of a slow, unstable network (pip hash error on a
+  corrupted download), so the container was **not run end to end with the trained model**. The API
+  itself was verified locally without Docker (see the API section).
 
 ## Not done (out of scope for this submission)
 
@@ -95,4 +99,4 @@ download), so the container has **not been verified**.
 - BentoML service and Locust load test (code only, never run). Batch scoring script not run.
 - DVC data versioning, Evidently drift report, Prometheus and Grafana dashboards, PSI alert, nginx 5/95
   canary. The PSI function and its tests exist (`src/monitoring/psi.py`) but are not connected to the API.
-- CI (`.github/workflows/ci.yml`) was written but not yet verified on GitHub.
+
